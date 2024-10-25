@@ -1,0 +1,192 @@
+/* Global Styling */
+body {
+    background-color: #000000; /* True black background */
+    color: #00ff00; /* Neon green text */
+    font-family: 'VT323', monospace;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* Blinking Cursor Effect */
+.terminal-typing::after {
+    content: '|'; /* The cursor character */
+    animation: blink 1s infinite; /* Blink effect */
+    color: #00ff00; /* Neon green cursor */
+}
+
+/* Animation for blinking cursor */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Page Grid Layout */
+.page-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr; /* Left, Center, Right columns */
+    grid-template-rows: auto; /* Content and bottom section */
+    height: 100vh; /* Full viewport height */
+    gap: 20px;
+    align-items: center;
+    justify-items: center; /* Reduce spacing between columns */
+    padding: 10px;
+    height: 100vh; /* Reduce padding */
+}
+
+/* Left and Right Columns */
+.left-column, .right-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Space items vertically */
+    align-items: center;
+    padding-top: 20px;
+    background-color: #000000;
+    height: auto; /* Dark background to frame the page */
+}
+
+/* Left Column Items */
+.left-item, .right-item {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.left-item img, .right-item img {
+    width: 150px; 
+    height: auto;
+    margin-bottom: 30px;
+}
+
+/* Center Section */
+.center-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Glitch Video in Center Section */
+.glitch-video {
+    width: 90%; /* Adjust based on your layout */
+    max-width: 1200px; /* Set a maximum width */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto;
+}
+
+/* Bottom Section (Directly Under the Main Image) */
+.bottom-section {
+    grid-column: 2 / 3; /* Bottom section spans only the center column */
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    margin-top: 20px;
+    background-color: #000000; /* Set a different background */
+}
+
+/* Button Frame to align buttons and thumbnails */
+.button-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+/* Thumbnails: Keep consistent with buttons */
+.thumbnail {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.thumbnail img {
+    max-width: 100%; /* Make sure images don't overflow the thumbnail box */
+    max-height: 100%; /* Ensure the image stays within the container */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+/* Thumbnails - Alternating Neon Green and Neon Pink */
+.thumbnail:nth-child(odd) {
+    border: 2px solid #00ff00; /* Neon green for 1st, 3rd */
+}
+
+.thumbnail:nth-child(even) {
+    border: 2px solid #ff00ff; /* Neon pink for 2nd, 4th */
+}
+
+/* Hover Effect for Neon Green Buttons */
+.neon-button.green {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #000000; /* Neon green text */
+    background-color: #00ff00;
+    border: 2px solid #00ff00; /* Neon green border */
+    text-transform: uppercase;
+    text-shadow: 0 0 5px #000000, 0 0 20px transparent, 0 0 30px #000000; /* Constant glow */
+    cursor: pointer;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00; /* Constant green glow */
+    transition: all 0.3s ease;
+}
+.neon-button.green:hover {
+    box-shadow: 0 0 30px #00ff00, 0 0 60px #00ff00;
+}
+/* Hover Effect for Neon Pink Buttons */
+.neon-button.pink {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #000000; /* Neon pink text */
+    background-color: #ff00ff;
+    border: 2px solid #ff00ff; /* Neon pink border */
+    text-transform: uppercase;
+    text-shadow: 0 0 5px #000000, 0 0 20px #ff00ff, 0 0 30px #ff00ff; /* Constant glow */
+    cursor: pointer;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff; /* Constant pink glow */
+    transition: all 0.3s ease;
+}
+.neon-button.pink:hover {
+    box-shadow: 0 0 30px #ff00ff, 0 0 60px #ff00ff;
+}
+/* Equalizer Canvas (If needed) */
+#equalizer-canvas {
+    width: 100px;
+    height: 180px; /* Reduce height */
+    background-color: #111;
+    border: 2px solid #ff00ff; /* Neon pink border for equalizer */
+    box-shadow: 0 0 10px #ff00ff; /* Neon pink glow for equalizer */
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .page-grid-container {
+        grid-template-columns: 1fr; /* Single column layout */
+        grid-template-rows: auto auto 1fr auto; /* Stack sections */
+    }
+
+    .left-column, .right-column {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .left-item img, .right-item img {
+	    max-width: 10px;
+    }
+
+    .bottom-section {
+        flex-direction: column;
+    }
+
+    .bottom-frame {
+	    margin-bottom: 20px;
+    }    
+
+    .neon-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
